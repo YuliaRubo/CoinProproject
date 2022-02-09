@@ -6,7 +6,6 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="coin")
-@ToString
 @Setter
 @Getter
 
@@ -30,6 +29,15 @@ public class Coin {
     }
 
     public Coin() {
+    }
+
+    @Override
+    public String toString() {
+        return "Coin{" +
+                "id=" + id +
+                ", symbol='" + symbol + '\'' +
+                ", priceUsd=" + priceUsd +
+                '}';
     }
 }
 

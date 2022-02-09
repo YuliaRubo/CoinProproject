@@ -8,7 +8,7 @@ import javax.persistence.Id;
 @Data
 @Getter
 @Setter
-@ToString
+
 public class CoinDTO {
 
 

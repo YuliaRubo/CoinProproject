@@ -29,22 +29,12 @@ public class CoinServiceImpl implements CoinService {
     @Override
     @Transactional
     public void save(@NotNull CoinDTO coinDTO){
-    coinRepository.save(new Coin(coinDTO.getId(), coinDTO.getSymbol(), coinDTO.getPriceUsd()));
+        Coin coin = new Coin(coinDTO.getId(),coinDTO.getSymbol(),coinDTO.getPriceUsd());
+    if(coinDTO.getId()==0){
+        coin.setId(coinDTO.getId());
+
+        coinRepository.save(coin);
     }
 
 
-//    @Override
-//    public void save(CoinDTO coinDTO) {
-//    coinRepository.save( );
-//    }
-//
-//    @Override
-//    public void delete(int id) {
-//
-//    }
-//
-//    @Override
-//    public List<CoinDTO> getAllCoin() {
-//        return null;
-//    }
-}
+}}

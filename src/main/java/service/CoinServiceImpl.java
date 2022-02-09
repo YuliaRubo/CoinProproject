@@ -35,6 +35,10 @@ public class CoinServiceImpl implements CoinService {
 
         coinRepository.save(coin);
     }
+}
 
-
-}}
+    @Override
+    public void delete(int id) {
+        coinRepository.deleteById(id);
+    }
+}

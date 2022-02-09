@@ -4,16 +4,14 @@ import dto.CoinDTO;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 import service.CoinService;
 
 
 @Log
 @Controller
-public class CoinController{
+public class CoinController {
 
     private CoinService coinService;
 
@@ -23,17 +21,21 @@ public class CoinController{
     }
 
     @GetMapping("/getById")
-    public void getCoinById(@RequestParam("id") int id){
-        System.out.println(coinService.getCoinById(id));
+    public String getCoinById(@RequestParam("id") int id, Model model) {
+        model.addAttribute("coin" , coinService.getCoinById(id));
+        return "coin";
     }
 
     @PostMapping("/save")
-    public void saveCoin(@RequestBody CoinDTO coinDTO){
+    public void saveCoin(@RequestBody CoinDTO coinDTO) {
         coinService.save(coinDTO);
     }
 
-
+    @GetMapping("/deleteById")
+    public void deleteCoinById(@RequestParam("id") int id) {
+        coinService.delete(id);
     }
+}
 
 
 

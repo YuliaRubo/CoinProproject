@@ -10,7 +10,7 @@ public interface CoinService {
 
    CoinDTO getCoinById(int id);
     void save(CoinDTO coinDTO);
-
+    void delete(int id);
 //    void save(CoinDTO coinDTO);
 //
 //    void delete(int id);
